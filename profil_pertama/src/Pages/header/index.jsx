@@ -60,9 +60,11 @@ export default function Header({ isDarkMode, setIsDarkMode }) {
           >
             Home
             {/* Garis bawah saat aktif */}
-            {activeSection === 'hero' && (
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500"></span>
-            )}
+            <span
+              className={`absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-300 ease-in-out ${
+                activeSection === 'hero' ? 'w-full' : 'w-0'
+              }`}
+            ></span>
           </button>
 
           {/* Tombol Contact */}
@@ -76,9 +78,11 @@ export default function Header({ isDarkMode, setIsDarkMode }) {
           >
             Contact
             {/* Garis bawah saat aktif */}
-            {activeSection === 'sosmed' && (
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500"></span>
-            )}
+            <span
+              className={`absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-300 ease-in-out ${
+                activeSection === 'sosmed' ? 'w-full' : 'w-0'
+              }`}
+            ></span>
           </button>
         </nav>
 
