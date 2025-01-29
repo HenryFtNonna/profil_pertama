@@ -92,7 +92,7 @@ export default function Header({ isDarkMode, setIsDarkMode }) {
 
           {/* Ikon matahari */}
           <svg
-            className="swap-on h-6 w-6 fill-current"
+            className="swap-on h-8 w-8 fill-current"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
@@ -101,7 +101,7 @@ export default function Header({ isDarkMode, setIsDarkMode }) {
 
           {/* Ikon bulan */}
           <svg
-            className="swap-off h-6 w-6 fill-current"
+            className="swap-off h-8 w-8 fill-current"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >

@@ -5,10 +5,10 @@ export default function HeroSection({ isDarkMode }) {
   return (
     <div
       id="hero"
-      className={`${isDarkMode ? 'bg-neutral-900 text-white' : 'bg-white text-black'} min-h-screen py-12 relative`}
+      className={`${isDarkMode ? 'bg-neutral-900 text-white' : 'bg-white text-black'} min-h-screen py-2 relative`}
     >
       {/* Konten HeroSection */}
-      <div className="container mx-auto px-8 flex flex-col md:flex-row items-center justify-center h-screen pt-18">
+      <div className="container mx-auto px-8 flex flex-col md:flex-row items-center justify-center h-screen">
         {/* Kolom Kiri: Teks Perkenalan */}
         <div className="md:w-1/2 text-center md:text-left">
           <h1 className="text-5xl font-bold mb-4">Mohan Henry Kusuma</h1>

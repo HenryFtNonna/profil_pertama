@@ -4,7 +4,7 @@ export default function SosmedSection({ isDarkMode }) {
   return (
     <div
       id="sosmed"
-      className={`min-h-screen py-12 ${
+      className={`min-h-screen py-12 pt-20 ${
         isDarkMode
           ? 'bg-gradient-to-b from-[#171717] to-[#58A3DC]' // Dark mode gradient
           : 'bg-gradient-to-b from-[#ffffff] to-[#58A3DC]' // Light mode gradient
