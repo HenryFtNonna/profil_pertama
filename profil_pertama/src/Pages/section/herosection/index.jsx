@@ -2,6 +2,12 @@ import React, { useEffect } from 'react';
 import Profil from '../../../assets/profil.jpg';
 
 export default function HeroSection({ isDarkMode }) {
+    const handleClick = () => {
+      window.location.href = 'mailto:mohan.henryk@gmail.com?subject=Your%20Message';
+  };
+
+
+
   return (
     <div
       id="hero"
@@ -16,11 +22,13 @@ export default function HeroSection({ isDarkMode }) {
           <p className="text-lg mb-6">
             A Computer Engineering student specializing in the Internet of Things (IoT). I have programming skills in JavaScript, Python, and C++ for Arduino. Currently, I am deeply passionate about Front-End Development and committed to advancing my skills in this field.
           </p>
-          <button className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+          <button
+          onClick={handleClick}
+          className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
             Email Me!
           </button>
         </div>
-
+        
         {/* Kolom Kanan: Foto Lingkaran */}
         <div className="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
           <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500">
@@ -34,4 +42,5 @@ export default function HeroSection({ isDarkMode }) {
       </div>
     </div>
   );
-}
+  }
+

@@ -25,7 +25,7 @@ export default function SosmedSection({ isDarkMode }) {
               Connect on LinkedIn
             </p>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/mohan-henry-kusuma/"
               className={`inline-block px-4 py-2 rounded-lg ${
                 isDarkMode ? 'bg-[#486ae9] text-white' : 'bg-blue-600 text-white'
               } hover:bg-blue-800 transition duration-300`}
@@ -43,7 +43,7 @@ export default function SosmedSection({ isDarkMode }) {
               Follow me on GitHub
             </p>
             <a
-              href="#"
+              href="https://github.com/HenryFtNonna"
               className={`inline-block px-4 py-2 rounded-lg ${
                 isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-600 text-white'
               } hover:bg-gray-800 transition duration-300`}
@@ -61,7 +61,7 @@ export default function SosmedSection({ isDarkMode }) {
               Follow me on Instagram
             </p>
             <a
-              href="#"
+              href="https://www.instagram.com/mohan.henryk/"
               className={`inline-block px-4 py-2 rounded-lg ${
                 isDarkMode ? 'bg-blue-400 text-white' : 'bg-blue-400 text-white'
               } hover:bg-blue-500 transition duration-300`}
