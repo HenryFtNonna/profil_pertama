@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Header from './header';
 import HeroSection from './section/herosection';
 import SosmedSection from './section/sosmedsection';
 
-export default function Pages() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
+export default function Pages({ isDarkMode, setIsDarkMode }) {
   return (
     <div>
-      <HeroSection isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <HeroSection isDarkMode={isDarkMode} />
       <SosmedSection isDarkMode={isDarkMode} />
     </div>
   );
