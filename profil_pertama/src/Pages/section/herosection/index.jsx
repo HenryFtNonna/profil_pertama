@@ -1,75 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
-export default function HeroSection() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
+export default function HeroSection({ isDarkMode, setIsDarkMode }) {
   // Mengatur tema awal saat komponen pertama kali dimuat
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', 'light'); // Set ke light mode saat pertama kali
-  }, []);
-
-  // Fungsi toggle untuk dropdown
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+    document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
 
   // Fungsi toggle untuk tema
-  const toggleTheme = () => {
-    setIsDarkMode((prevMode) => {
-      const newMode = !prevMode;
-      document.documentElement.setAttribute('data-theme', newMode ? 'dark' : 'light');
-      return newMode;
-    });
-  };
+  const toggleTheme = () => setIsDarkMode((prev) => !prev);
 
   return (
     <div className={`${isDarkMode ? 'bg-neutral-900 text-white' : 'bg-white text-black'} min-h-screen py-12 relative`}>
-      {/* Tombol dropdown di pojok kiri atas */}
-      <div className="absolute top-8 left-12">
-        <button 
-          className="btn btn-circle bg-transparent swap swap-rotate" 
-          onClick={toggleDropdown}
-        >
-          <input type="checkbox" checked={isDropdownOpen} readOnly />
-
-          {/* Ikon hamburger */}
-          <svg
-            className="swap-off fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 512 512"
-          >
-            <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
-          </svg>
-
-          {/* Ikon close */}
-          <svg
-            className="swap-on fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 512 512"
-          >
-            <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 366.51 289.49 256 400 145.49" />
-          </svg>
-        </button>
-
-        {/* Dropdown menu */}
-        {isDropdownOpen && (
-          <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow absolute left-0 top-full">
-            <li><a href="#home">Homepage</a></li>
-            <li><a href="#portfolio">Portofolio</a></li>
-            <li><a href="#about">About</a></li>
-          </ul>
-        )}
-      </div>
-
       {/* Tombol toggle tema di pojok kanan atas */}
       <div className="absolute top-8 right-12">
         <label className="swap swap-rotate">
-          {/* checkbox tersembunyi yang mengontrol status */}
           <input type="checkbox" checked={isDarkMode} onChange={toggleTheme} />
 
           {/* Ikon matahari */}
