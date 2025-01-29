@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Profil from '../../../assets/profil.jpg';
 
 export default function HeroSection({ isDarkMode, setIsDarkMode }) {
   // Mengatur tema awal saat komponen pertama kali dimuat
@@ -12,7 +13,7 @@ export default function HeroSection({ isDarkMode, setIsDarkMode }) {
   return (
     <div className={`${isDarkMode ? 'bg-neutral-900 text-white' : 'bg-white text-black'} min-h-screen py-12 relative`}>
       {/* Tombol toggle tema di pojok kanan atas */}
-      <div className="absolute top-8 right-12">
+      <div className="absolute top-10 right-12 mr-10">
         <label className="swap swap-rotate">
           <input type="checkbox" checked={isDarkMode} onChange={toggleTheme} />
 
@@ -34,6 +35,32 @@ export default function HeroSection({ isDarkMode, setIsDarkMode }) {
             <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
           </svg>
         </label>
+      </div>
+
+      {/* Konten HeroSection */}
+      <div className="container mx-auto px-8 flex flex-col md:flex-row items-center justify-center h-screen pt-18"> {/* Gunakan h-screen untuk mengisi tinggi layar */}
+        {/* Kolom Kiri: Teks Perkenalan */}
+        <div className="md:w-1/2 text-center md:text-left">
+          <h1 className="text-5xl font-bold mb-4">Mohan Henry Kusuma</h1>
+          <h2 className="text-3xl font-semibold mb-4">Hello, I’m Henry</h2>
+          <p className="text-lg mb-6">
+            A Computer Engineering student specializing in the Internet of Things (IoT). I have programming skills in JavaScript, Python, and C++ for Arduino. Currently, I am deeply passionate about Front-End Development and committed to advancing my skills in this field.
+          </p>
+          <button className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+            Email Me!
+          </button>
+        </div>
+
+        {/* Kolom Kanan: Foto Lingkaran */}
+        <div className="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
+          <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500">
+            <img
+              src={Profil} // Ganti dengan URL foto Anda
+              alt="Mohan Henry Kusuma"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
