@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function SosmedSection({ isDarkMode, language }) {
+  
   const texts = {
     en: {
       title: "Connect with Me",
@@ -25,8 +26,8 @@ export default function SosmedSection({ isDarkMode, language }) {
           : 'bg-gradient-to-b from-[#ffffff] to-[#58A3DC]'
       }`}
     >
-      <div className="container mx-auto px-4">
-        <h2 className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-black'} mb-12 text-center`}>
+      <div className="container mx-auto px-8">
+        <h2 className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-black'} mb-12 mt-6 text-center`}>
           {texts[language].title}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

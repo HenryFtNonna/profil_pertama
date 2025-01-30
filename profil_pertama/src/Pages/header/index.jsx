@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Language from '../../assets/language.svg'
 
 export default function Header({ isDarkMode, setIsDarkMode, language, setLanguage }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -86,18 +85,56 @@ export default function Header({ isDarkMode, setIsDarkMode, language, setLanguag
           </button>
         </nav>
 
-        {/* Dropdown Pilihan Bahasa */}
+        {/* Dropdown Pilihan Bahasa (Diubah menggunakan DaisyUI) */}
         <div className="flex items-center gap-4">
-          <select
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            className={`bg-transparent border-none focus:outline-none ${
-              isDarkMode ? 'text-white' : 'text-black'
-            }`}
-          >
-            <option value="en">ENGLISH</option>
-            <option value="id">INDONESIA</option>
-          </select>
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className={`btn btn-ghost ${
+                isDarkMode ? 'text-white hover:bg-neutral-700' : 'text-black hover:bg-neutral-100'
+              }`}
+            >
+              {language === 'en' ? 'ENGLISH' : 'INDONESIA'}
+            </div>
+            <ul
+              tabIndex={0}
+              className={`dropdown-content z-[1] menu p-2 shadow rounded-box w-52 ${
+                isDarkMode ? 'bg-neutral-800' : 'bg-white'
+              }`}
+            >
+              {['en', 'id'].map((lang) => (
+                <li key={lang}>
+                  <button
+                    onClick={() => setLanguage(lang)}
+                    className={`flex justify-between items-center ${
+                      isDarkMode
+                        ? 'text-white hover:bg-neutral-700'
+                        : 'text-black hover:bg-neutral-100'
+                    }`}
+                  >
+                    <span>{lang === 'en' ? 'ENGLISH' : 'INDONESIA'}</span>
+                    {language === lang && (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 text-blue-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    )}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Tombol Toggle Theme */}
           <label className="swap swap-rotate">
