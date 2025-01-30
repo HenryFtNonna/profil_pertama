@@ -1,0 +1,19 @@
+/* styles/globals.css */
+.dropdown-content li button {
+    position: relative;
+  }
+  
+  .dropdown-content li button:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 2px;
+    background-color: #3b82f6; /* Warna biru Tailwind */
+  }
+  
+  .dark .dropdown-content li button:hover::after {
+    background-color: #60a5fa; /* Warna biru yang lebih terang untuk dark mode */
+  }
