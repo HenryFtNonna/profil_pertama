@@ -6,7 +6,8 @@ function App() {
   const [language, setLanguage] = useState('en'); // 'en' untuk English, 'id' untuk Indonesia
 
   return (
-    <div>
+    
+    <div className={isDarkMode ? 'dark' : 'light'}>
       <Pages
         isDarkMode={isDarkMode}
         setIsDarkMode={setIsDarkMode}

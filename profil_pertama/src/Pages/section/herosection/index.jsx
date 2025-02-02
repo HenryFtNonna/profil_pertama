@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from "framer-motion";
 import Profil from '../../../assets/profil2.jpg';
 
 export default function HeroSection({ isDarkMode, language }) {
@@ -21,36 +22,106 @@ export default function HeroSection({ isDarkMode, language }) {
     },
   };
 
+  const ProfilePhoto = {
+    offscreen: {
+      y: 50,
+      opacity: 0
+    },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.4,
+        duration: 0.8
+      }
+    }
+  };
+
+  const ButtonEmail = {
+    offscreen: {
+      y: 50,
+      opacity: 0
+    },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.4,
+        duration: 0.4, // Durasi diperpendek
+        delay: 0.3    // Tambahkan delay jika perlu
+      }
+    }
+  };
+
   return (
+    
     <div
       id="hero"
-      className={`${isDarkMode ? 'bg-neutral-900 text-white' : 'bg-white text-black'} min-h-screen py-2 relative`}
+      className={`${isDarkMode ? 'bg-neutral-900 text-white' : 'bg-white text-black'} min-h-[calc(100vh-5rem)] py-2 relative`}
     >
-      <div className="container mx-auto px-12 flex flex-col md:flex-row items-center justify-center h-screen">
+      
+
+      <div className="container mx-auto px-4 md:px-12 flex flex-col md:flex-row items-center justify-center h-screen">
         {/* Kolom Kiri: Teks Perkenalan */}
-        <div className="md:w-1/2 text-center md:text-left">
-          <h2 className="text-5xl font-bold mb-4" >
-            {texts[language].greeting} <span className='wave text-[60px]'>👋</span>
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="md:w-1/2 text-center md:text-left"
+>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            {texts[language].greeting} <span className='wave text-[50px] md:text-[60px]'>👋</span>
           </h2>
           <p className="text-lg mb-6">{texts[language].description}</p>
-          <button
+          <motion.button
+            variants={ButtonEmail}
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.2 }}
+            whileHover={{ 
+              scale: 1.15,
+              transition: { 
+                type: "spring", 
+                bounce: 0.6,  // Nilai bounce lebih tinggi untuk efek lebih "hidup"
+                duration: 0.3 // Durasi hover diperpendek
+              } 
+            }}
+            whileTap={{ 
+              scale: 0.95,
+              transition: { 
+                type: "spring", 
+                bounce: 0.4, 
+                duration: 0.1 
+              } 
+            }}
             onClick={handleClick}
-            className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300"
+            className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-200"
           >
             {texts[language].button}
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
 
         {/* Kolom Kanan: Foto Lingkaran */}
-        <div className="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0 mr-12">
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.2 }}
+          whileHover={{ scale: 1.10 }}
+          whileTap={{ scale: 0.95 }}
+          variants={ProfilePhoto}
+          className="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0 mr-12"
+>
           <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500">
             <img
               src={Profil}
               alt="Mohan Henry Kusuma"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
