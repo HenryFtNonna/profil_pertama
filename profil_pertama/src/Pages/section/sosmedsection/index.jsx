@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion } from "framer-motion";
+import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 
 export default function SosmedSection({ isDarkMode, language }) {
   
@@ -17,73 +19,199 @@ export default function SosmedSection({ isDarkMode, language }) {
     },
   };
 
+  const cardVariants = {
+    offscreen: {
+      y: 50,
+      opacity: 0
+    },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.4,
+        duration: 0.8
+      }
+    }
+  };
+
+  const ButtonSosmed = {
+
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.4,
+        duration: 0.2, // Durasi diperpendek
+        delay: 0.2    // Tambahkan delay jika perlu
+      }
+    }
+  };
+
+  
+
   return (
-    <div
-      id="sosmed"
-      className={`min-h-screen py-12 pt-20 ${
-        isDarkMode
-          ? 'bg-gradient-to-b from-[#171717] to-[#58A3DC]'
-          : 'bg-gradient-to-b from-[#ffffff] to-[#58A3DC]'
-      }`}
-    >
+        <div
+          id="sosmed"
+          className={`min-h-[calc(100vh-5rem)] py-12 ${
+            isDarkMode
+              ? 'bg-gradient-to-b from-neutral-900 to-neutral-600'
+              : 'bg-gradient-to-b from-white to-blue-200'
+          }`}
+        >
       <div className="container mx-auto px-8">
-        <h2 className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-black'} mb-12 mt-6 text-center`}>
+        <h2 className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-black'} mb-12 text-center`}>
           {texts[language].title}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
           {/* Card LinkedIn */}
-          <div className={`p-6 rounded-lg shadow-lg ${isDarkMode ? 'bg-neutral-800' : 'bg-white'}`}>
+          <motion.div 
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={cardVariants}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className={`p-6 rounded-lg shadow-lg ${isDarkMode ? 'bg-neutral-800' : 'bg-white'}`}
+>
+          
+          <FaLinkedin className={`text-4xl mb-4 transition-all duration-300 ease-in-out ${
+                isDarkMode ? 'text-[#0A66C2]' : 'text-[#0A66C2]'  
+              }`} />
             <h3 className={`text-2xl font-semibold ${isDarkMode ? 'text-white' : 'text-black'} mb-4`}>
               LinkedIn
             </h3>
             <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
               {texts[language].linkedin}
             </p>
-            <a
+            <motion.a
+            variants={ButtonSosmed}
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.2 }}
+            whileHover={{ 
+              scale: 1.15,
+              transition: { 
+                type: "spring", 
+                bounce: 0.2,  // Nilai bounce lebih tinggi untuk efek lebih "hidup"
+                duration: 0.2  // Durasi hover diperpendek
+              } 
+            }}
+            whileTap={{ 
+              scale: 0.95,
+              transition: { 
+                type: "spring", 
+                bounce: 0.4, 
+                duration: 0.1 
+              } 
+            }}
+            // onClick={handleClick}
               href="https://www.linkedin.com/in/mohan-henry-kusuma/"
               className={`inline-block px-4 py-2 rounded-lg ${
-                isDarkMode ? 'bg-[#486ae9] text-white' : 'bg-blue-600 text-white'
-              } hover:bg-blue-800 transition duration-300`}
+                isDarkMode ? 'bg-[#428dd7] text-white' : 'bg-[#428dd7] text-white'
+              } hover:bg-[#0A66C2] transition duration-300`}
             >
               {language === 'en' ? 'Connect' : 'Hubungi'}
-            </a>
-          </div>
+            </motion.a>
+            </motion.div>
 
           {/* Card GitHub */}
-          <div className={`p-6 rounded-lg shadow-lg ${isDarkMode ? 'bg-neutral-800' : 'bg-white'}`}>
+          
+          <motion.div 
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={cardVariants}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className={`p-6 rounded-lg shadow-lg ${isDarkMode ? 'bg-neutral-800' : 'bg-white'}`}
+          >
+          <FaGithub className={`text-4xl mb-4 transition-all duration-300 ease-in-out ${
+                isDarkMode ? 'text-gray-200' : 'text-gray-800'
+              }`} />
             <h3 className={`text-2xl font-semibold ${isDarkMode ? 'text-white' : 'text-black'} mb-4`}>
               GitHub
             </h3>
             <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
               {texts[language].github}
             </p>
-            <a
+            <motion.a
+              variants={ButtonSosmed}
+              whileInView="onscreen"
+              viewport={{ once: true, amount: 0.2 }}
+              whileHover={{ 
+                scale: 1.15,
+                transition: { 
+                  type: "spring", 
+                  bounce: 0.2,  // Nilai bounce lebih tinggi untuk efek lebih "hidup"
+                  duration: 0.2  // Durasi hover diperpendek
+                } 
+              }}
+              whileTap={{ 
+                scale: 0.95,
+                transition: { 
+                  type: "spring", 
+                  bounce: 0.4, 
+                  duration: 0.1 
+                } 
+              }}
               href="https://github.com/HenryFtNonna"
               className={`inline-block px-4 py-2 rounded-lg ${
                 isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-600 text-white'
               } hover:bg-gray-800 transition duration-300`}
             >
               {language === 'en' ? 'Visit GitHub' : 'Kunjungi GitHub'}
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
 
           {/* Card Instagram */}
-          <div className={`p-6 rounded-lg shadow-lg ${isDarkMode ? 'bg-neutral-800' : 'bg-white'}`}>
+          <motion.div 
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={cardVariants}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className={`p-6 rounded-lg shadow-lg ${isDarkMode ? 'bg-neutral-800' : 'bg-white'}`}
+>
+          <FaInstagram className={`text-4xl mb-4 transition-all duration-300 ease-in-out ${
+                isDarkMode ? 'text-[#E4405F]' : 'text-[#E4405F]'
+              }`} />
             <h3 className={`text-2xl font-semibold ${isDarkMode ? 'text-white' : 'text-black'} mb-4`}>
               Instagram
             </h3>
             <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
               {texts[language].instagram}
             </p>
-            <a
+            <motion.a
+            variants={ButtonSosmed}
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.2 }}
+            whileHover={{ 
+              scale: 1.15,
+              transition: { 
+                type: "spring", 
+                bounce: 0.2,  // Nilai bounce lebih tinggi untuk efek lebih "hidup"
+                duration: 0.2  // Durasi hover diperpendek
+              } 
+            }}
+            whileTap={{ 
+              scale: 0.95,
+              transition: { 
+                type: "spring", 
+                bounce: 0.4, 
+                duration: 0.1 
+              } 
+            }}
               href="https://www.instagram.com/mohan.henryk/"
               className={`inline-block px-4 py-2 rounded-lg ${
-                isDarkMode ? 'bg-blue-400 text-white' : 'bg-blue-400 text-white'
-              } hover:bg-blue-500 transition duration-300`}
+                isDarkMode ? 'bg-[#e17185] text-white' : 'bg-[#e17185] text-white'
+              } hover:bg-[#E4405F] transition duration-300`}
             >
               {language === 'en' ? 'Follow' : 'Ikuti'}
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
       </div>
     </div>

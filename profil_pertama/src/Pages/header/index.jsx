@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-scroll';
 
 export default function Header({ isDarkMode, setIsDarkMode, language, setLanguage }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -9,12 +10,9 @@ export default function Header({ isDarkMode, setIsDarkMode, language, setLanguag
 
   // Fungsi untuk scroll ke section tertentu
   const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(id);
-    }
+    setActiveSection(id);
   };
+  
 
   // Efek untuk menangani scroll dan menentukan section aktif
   useEffect(() => {
@@ -48,45 +46,54 @@ export default function Header({ isDarkMode, setIsDarkMode, language, setLanguag
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Navbar (dipindahkan ke kiri) */}
         <nav className="flex items-center gap-6">
-          {/* Tombol Home */}
-          <button
-            onClick={() => scrollToSection('hero')}
-            className={`relative transition duration-300 ${
-              activeSection === 'hero'
-                ? 'text-blue-500'
-                : 'text-[#6e6e6e] hover:text-blue-500'
+  {/* Tombol Home */}
+          <Link
+          to="hero"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+          className={`relative pb-2 cursor-pointer select-none ${
+            activeSection === 'hero' 
+              ? 'text-blue-500' 
+              : 'text-[#6e6e6e] hover:text-blue-500'
+          }`}
+        >
+          {language === 'en' ? 'Home' : 'Beranda'}
+          
+          <span
+            className={`absolute bottom-0 left-0 h-0.5 bg-blue-500 z-10 transition-all duration-300 ease-in-out ${
+              activeSection === 'hero' ? 'w-full' : 'w-0'
             }`}
-          >
-            {language === 'en' ? 'Home' : 'Beranda'}
-            {/* Garis bawah saat aktif */}
-            <span
-              className={`absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-300 ease-in-out ${
-                activeSection === 'hero' ? 'w-full' : 'w-0'
-              }`}
-            ></span>
-          </button>
+          ></span>
+        </Link>
 
-          {/* Tombol Contact */}
-          <button
-            onClick={() => scrollToSection('sosmed')}
-            className={`relative transition duration-300 ${
-              activeSection === 'sosmed'
-                ? 'text-blue-500'
-                : 'text-[#6e6e6e] hover:text-blue-500'
+  {/* Tombol Contact */}
+          <Link
+            to="sosmed"
+            spy={true}
+            smooth={true}
+            offset={-70} // Ubah offset menjadi -100
+            duration={500} // Perpanjang durasi
+            onSetActive={() => setActiveSection('sosmed')}
+          className={`relative pb-2 cursor-pointer select-none ${
+            activeSection === 'sosmed' 
+              ? 'text-blue-500' 
+              : 'text-[#6e6e6e] hover:text-blue-500'
+          }`}
+        >
+          {language === 'en' ? 'Contact' : 'Kontak'}
+          
+          <span
+            className={`absolute bottom-0 left-0 h-0.5 bg-blue-500 z-10 transition-all duration-300 ease-in-out ${
+              activeSection === 'sosmed' ? 'w-full' : 'w-0'
             }`}
-          >
-            {language === 'en' ? 'Contact' : 'Kontak'}
-            {/* Garis bawah saat aktif */}
-            <span
-              className={`absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-300 ease-in-out ${
-                activeSection === 'sosmed' ? 'w-full' : 'w-0'
-              }`}
-            ></span>
-          </button>
+          ></span>
+        </Link>
         </nav>
 
         {/* Dropdown Pilihan Bahasa (Diubah menggunakan DaisyUI) */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
