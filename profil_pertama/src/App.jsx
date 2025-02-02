@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Pages from './Pages';
 
 function App() {
@@ -8,12 +9,15 @@ function App() {
   return (
     
     <div className={isDarkMode ? 'dark' : 'light'}>
-      <Pages
-        isDarkMode={isDarkMode}
-        setIsDarkMode={setIsDarkMode}
-        language={language}
-        setLanguage={setLanguage}
-      />
+      <AnimatePresence mode='wait'>
+        <Pages
+          isDarkMode={isDarkMode}
+          setIsDarkMode={setIsDarkMode}
+          language={language}
+          setLanguage={setLanguage}
+          key={language + (isDarkMode ? 'dark' : 'light')} // Force re-render on theme/lang change
+        />
+      </AnimatePresence>
     </div>
   );
 }
