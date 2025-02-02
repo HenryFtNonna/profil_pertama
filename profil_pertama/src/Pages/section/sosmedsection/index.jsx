@@ -21,7 +21,7 @@ export default function SosmedSection({ isDarkMode, language }) {
 
   const cardVariants = {
     offscreen: {
-      y: 50,
+      y: 80,
       opacity: 0
     },
     onscreen: {
@@ -35,16 +35,29 @@ export default function SosmedSection({ isDarkMode, language }) {
     }
   };
 
-  const ButtonSosmed = {
+  // const ButtonSosmed = {
 
-    onscreen: {
-      y: 0,
+  //   onscreen: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       type: "spring",
+  //       bounce: 0.4,
+  //       duration: 0.2, // Durasi diperpendek
+  //       delay: 0.2    // Tambahkan delay jika perlu
+  //     }
+  //   }
+  // };
+
+  const ButtonSosmed = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
       opacity: 1,
       transition: {
         type: "spring",
-        bounce: 0.4,
-        duration: 0.2, // Durasi diperpendek
-        delay: 0.2    // Tambahkan delay jika perlu
+        bounce: 0.5,
+        duration: 0.3
       }
     }
   };
@@ -70,7 +83,7 @@ export default function SosmedSection({ isDarkMode, language }) {
           <motion.div 
             initial="offscreen"
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{  amount: 0.2 }}
             variants={cardVariants}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -89,7 +102,7 @@ export default function SosmedSection({ isDarkMode, language }) {
             <motion.a
             variants={ButtonSosmed}
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{amount: 0.2 }}
             whileHover={{ 
               scale: 1.15,
               transition: { 
@@ -121,7 +134,7 @@ export default function SosmedSection({ isDarkMode, language }) {
           <motion.div 
             initial="offscreen"
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{  amount: 0.2 }}
             variants={cardVariants}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -139,7 +152,7 @@ export default function SosmedSection({ isDarkMode, language }) {
             <motion.a
               variants={ButtonSosmed}
               whileInView="onscreen"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{  amount: 0.2 }}
               whileHover={{ 
                 scale: 1.15,
                 transition: { 
@@ -169,7 +182,7 @@ export default function SosmedSection({ isDarkMode, language }) {
           <motion.div 
             initial="offscreen"
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{  amount: 0.2 }}
             variants={cardVariants}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -187,7 +200,7 @@ export default function SosmedSection({ isDarkMode, language }) {
             <motion.a
             variants={ButtonSosmed}
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{amount: 0.2 }}
             whileHover={{ 
               scale: 1.15,
               transition: { 

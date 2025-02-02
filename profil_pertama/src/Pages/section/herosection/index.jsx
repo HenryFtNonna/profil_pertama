@@ -22,18 +22,32 @@ export default function HeroSection({ isDarkMode, language }) {
     },
   };
 
-  const ProfilePhoto = {
-    offscreen: {
-      y: 50,
-      opacity: 0
-    },
-    onscreen: {
-      y: 0,
+  // const ProfilePhoto = {
+  //   offscreen: {
+  //     y: 50,
+  //     opacity: 0
+  //   },
+  //   onscreen: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       type: "spring",
+  //       bounce: 0.4,
+  //       duration: 0.8
+  //     }
+  //   }
+  // };
+
+  const imageVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: {
       opacity: 1,
+      x: 0,
       transition: {
         type: "spring",
-        bounce: 0.4,
-        duration: 0.8
+        bounce: 0.6,
+        duration: 0.8,
+        delay: 0.2
       }
     }
   };
@@ -55,6 +69,18 @@ export default function HeroSection({ isDarkMode, language }) {
     }
   };
 
+  const textVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        when: "beforeChildren"
+      }
+    }
+  };
+
   return (
     
     <div
@@ -66,9 +92,15 @@ export default function HeroSection({ isDarkMode, language }) {
       <div className="container mx-auto px-4 md:px-12 flex flex-col md:flex-row items-center justify-center h-screen">
         {/* Kolom Kiri: Teks Perkenalan */}
         <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          // initial={{ opacity: 0, x: -50 }}
+          // animate={{ opacity: 1, x: 0 }}
+          // transition={{ duration: 0.8 }}
+          // className="md:w-1/2 text-center md:text-left"
+
+          variants={textVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.2, margin: "100px" }} // Hapus once: true
           className="md:w-1/2 text-center md:text-left"
 >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -79,7 +111,7 @@ export default function HeroSection({ isDarkMode, language }) {
             variants={ButtonEmail}
             initial="offscreen"
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{amount: 0.2, margin:"50px" }}
             whileHover={{ 
               scale: 1.15,
               transition: { 
@@ -105,14 +137,25 @@ export default function HeroSection({ isDarkMode, language }) {
 
         {/* Kolom Kanan: Foto Lingkaran */}
         <motion.div
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.2 }}
+          // initial="offscreen"
+          // whileInView="onscreen"
+          // viewport={{  amount: 0.2,margin: "100px" }}
+          // whileHover={{ scale: 1.10 }}
+          // whileTap={{ scale: 0.95 }}
+          // variants={ProfilePhoto}
+          // className="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0 mr-12"
+
+          variants={imageVariants}
+          initial="hidden"
+          whileInView="visible"
           whileHover={{ scale: 1.10 }}
           whileTap={{ scale: 0.95 }}
-          variants={ProfilePhoto}
+          viewport={{ amount: 0.2, margin: "100px" }} // Hapus once: true
           className="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0 mr-12"
 >
+
+
+
           <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500">
             <img
               src={Profil}
