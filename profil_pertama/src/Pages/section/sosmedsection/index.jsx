@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
+import Footer from '../../footer/index';
 
 export default function SosmedSection({ isDarkMode, language }) {
   
@@ -21,7 +22,7 @@ export default function SosmedSection({ isDarkMode, language }) {
 
   const cardVariants = {
     offscreen: {
-      y: 80,
+      y: 100,
       opacity: 0
     },
     onscreen: {
@@ -34,20 +35,6 @@ export default function SosmedSection({ isDarkMode, language }) {
       }
     }
   };
-
-  // const ButtonSosmed = {
-
-  //   onscreen: {
-  //     y: 0,
-  //     opacity: 1,
-  //     transition: {
-  //       type: "spring",
-  //       bounce: 0.4,
-  //       duration: 0.2, // Durasi diperpendek
-  //       delay: 0.2    // Tambahkan delay jika perlu
-  //     }
-  //   }
-  // };
 
   const ButtonSosmed = {
     hidden: { scale: 0.8, opacity: 0 },
@@ -67,17 +54,17 @@ export default function SosmedSection({ isDarkMode, language }) {
   return (
         <div
           id="sosmed"
-          className={`min-h-[calc(100vh-5rem)] py-12 ${
+          className={`min-h-[calc(100vh-5rem)] py-12 z-10  ${
             isDarkMode
               ? 'bg-gradient-to-b from-neutral-900 to-neutral-600'
               : 'bg-gradient-to-b from-white to-blue-200'
           }`}
         >
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-8 relative z-10">
         <h2 className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-black'} mb-12 text-center`}>
           {texts[language].title}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-[130px]">
 
           {/* Card LinkedIn */}
           <motion.div 
@@ -107,8 +94,8 @@ export default function SosmedSection({ isDarkMode, language }) {
               scale: 1.15,
               transition: { 
                 type: "spring", 
-                bounce: 0.2,  // Nilai bounce lebih tinggi untuk efek lebih "hidup"
-                duration: 0.2  // Durasi hover diperpendek
+                bounce: 0.2,  
+                duration: 0.2  
               } 
             }}
             whileTap={{ 
@@ -119,8 +106,9 @@ export default function SosmedSection({ isDarkMode, language }) {
                 duration: 0.1 
               } 
             }}
-            // onClick={handleClick}
               href="https://www.linkedin.com/in/mohan-henry-kusuma/"
+              target="_blank"
+              rel="noreferrer"
               className={`inline-block px-4 py-2 rounded-lg ${
                 isDarkMode ? 'bg-[#428dd7] text-white' : 'bg-[#428dd7] text-white'
               } hover:bg-[#0A66C2] transition duration-300`}
@@ -130,7 +118,6 @@ export default function SosmedSection({ isDarkMode, language }) {
             </motion.div>
 
           {/* Card GitHub */}
-          
           <motion.div 
             initial="offscreen"
             whileInView="onscreen"
@@ -157,8 +144,8 @@ export default function SosmedSection({ isDarkMode, language }) {
                 scale: 1.15,
                 transition: { 
                   type: "spring", 
-                  bounce: 0.2,  // Nilai bounce lebih tinggi untuk efek lebih "hidup"
-                  duration: 0.2  // Durasi hover diperpendek
+                  bounce: 0.2,  
+                  duration: 0.2  
                 } 
               }}
               whileTap={{ 
@@ -170,6 +157,8 @@ export default function SosmedSection({ isDarkMode, language }) {
                 } 
               }}
               href="https://github.com/HenryFtNonna"
+              target="_blank"
+              rel="noreferrer"
               className={`inline-block px-4 py-2 rounded-lg ${
                 isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-600 text-white'
               } hover:bg-gray-800 transition duration-300`}
@@ -205,8 +194,8 @@ export default function SosmedSection({ isDarkMode, language }) {
               scale: 1.15,
               transition: { 
                 type: "spring", 
-                bounce: 0.2,  // Nilai bounce lebih tinggi untuk efek lebih "hidup"
-                duration: 0.2  // Durasi hover diperpendek
+                bounce: 0.2,  
+                duration: 0.2  
               } 
             }}
             whileTap={{ 
@@ -218,6 +207,8 @@ export default function SosmedSection({ isDarkMode, language }) {
               } 
             }}
               href="https://www.instagram.com/mohan.henryk/"
+              target="_blank"
+              rel="noreferrer"
               className={`inline-block px-4 py-2 rounded-lg ${
                 isDarkMode ? 'bg-[#e17185] text-white' : 'bg-[#e17185] text-white'
               } hover:bg-[#E4405F] transition duration-300`}
@@ -226,6 +217,7 @@ export default function SosmedSection({ isDarkMode, language }) {
             </motion.a>
           </motion.div>
         </div>
+        <Footer />
       </div>
     </div>
   );
