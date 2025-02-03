@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import ParticlesComponent from "../../../Components/Particle"
 import Profil from '../../../assets/profil2.jpg';
 
 export default function HeroSection({ isDarkMode, language }) {
@@ -11,13 +12,13 @@ export default function HeroSection({ isDarkMode, language }) {
     en: {
       greeting: "Hello, I’m Henry ",
       description:
-        "A Computer Engineering student specializing in the Internet of Things (IoT). I have programming skills in JavaScript, Python, and C++ for Arduino. Currently, I am deeply passionate about Front-End Development and committed to advancing my skills in this field.",
+        "A Computer Engineering student specializing in the Internet of Things (IoT). I have programming skills in ReactJS, Python, and C++ for Arduino. Currently, I am deeply passionate about Front-End Development and committed to advancing my skills in this field.",
       button: "Email Me!",
     },
     id: {
       greeting: "Halo, saya Henry ",
       description:
-        "Seorang mahasiswa Teknik Komputer yang berspesialisasi dalam Internet of Things (IoT). Saya memiliki keterampilan pemrograman dalam JavaScript, Python, dan C++ untuk Arduino. Saat ini, saya sangat tertarik dengan Pengembangan Front-End dan berkomitmen untuk meningkatkan keterampilan saya di bidang ini.",
+        "Seorang mahasiswa Teknik Komputer yang berfokus dalam Internet of Things (IoT). Saya memiliki keterampilan pemrograman dalam ReactJS, Python, dan C++ untuk Arduino. Saat ini, saya sangat tertarik dengan Pengembangan Front-End dan berkomitmen untuk meningkatkan keterampilan saya di bidang ini.",
       button: "Email Saya!",
     },
   };
@@ -83,13 +84,13 @@ export default function HeroSection({ isDarkMode, language }) {
 
   return (
     
-    <div
-      id="hero"
-      className={`${isDarkMode ? 'bg-neutral-900 text-white' : 'bg-white text-black'} min-h-[calc(100vh-5rem)] py-2 relative`}
-    >
-      
+<div
+  id="hero"
+  className={`${isDarkMode ? 'bg-neutral-900 text-white' : 'bg-white text-black'} min-h-[calc(100vh-5rem)] py-2 relative`}
+>
+      <ParticlesComponent isDarkMode={isDarkMode} />
 
-      <div className="container mx-auto px-4 md:px-12 flex flex-col md:flex-row items-center justify-center h-screen">
+      <div className="container mx-auto px-4 md:px-12 flex flex-col md:flex-row items-center justify-center h-screen relative z-10">
         {/* Kolom Kiri: Teks Perkenalan */}
         <motion.div 
           // initial={{ opacity: 0, x: -50 }}
@@ -148,22 +149,33 @@ export default function HeroSection({ isDarkMode, language }) {
           variants={imageVariants}
           initial="hidden"
           whileInView="visible"
-          whileHover={{ scale: 1.10 }}
+          whileHover={{ 
+            scale: 1.10,
+            transition: { 
+              type: "spring", 
+              bounce: 0.6,
+              duration: 0.3
+            } 
+          }}
           whileTap={{ scale: 0.95 }}
-          viewport={{ amount: 0.2, margin: "100px" }} // Hapus once: true
+          viewport={{ amount: 0.2, margin: "100px" }}
           className="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0 mr-12"
->
-
-
-
-          <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500">
-            <img
-              src={Profil}
-              alt="Mohan Henry Kusuma"
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
+        >
+<div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500 
+                relative hover:shadow-[0_0_50px_15px_rgba(59,130,246,0.7)] 
+                transition-shadow duration-300">
+  {/* Glow Effect */}
+  <div className="absolute inset-0 rounded-full pointer-events-none 
+                  shadow-[0_0_80px_25px_rgba(59,130,246,0.6)] 
+                  opacity-80 hover:opacity-100 transition-opacity duration-300" />
+  
+  <img
+    src={Profil}
+    alt="Mohan Henry Kusuma"
+    className="w-full h-full object-cover"
+    loading="lazy"
+  />
+</div>
         </motion.div>
       </div>
     </div>

@@ -21,7 +21,7 @@ export default function SosmedSection({ isDarkMode, language }) {
 
   const cardVariants = {
     offscreen: {
-      y: 80,
+      y: 100,
       opacity: 0
     },
     onscreen: {
@@ -67,13 +67,13 @@ export default function SosmedSection({ isDarkMode, language }) {
   return (
         <div
           id="sosmed"
-          className={`min-h-[calc(100vh-5rem)] py-12 ${
+          className={`min-h-[calc(100vh-5rem)] py-12 z-10  ${
             isDarkMode
               ? 'bg-gradient-to-b from-neutral-900 to-neutral-600'
               : 'bg-gradient-to-b from-white to-blue-200'
           }`}
         >
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-8 relative z-10">
         <h2 className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-black'} mb-12 text-center`}>
           {texts[language].title}
         </h2>
@@ -119,8 +119,9 @@ export default function SosmedSection({ isDarkMode, language }) {
                 duration: 0.1 
               } 
             }}
-            // onClick={handleClick}
               href="https://www.linkedin.com/in/mohan-henry-kusuma/"
+              target="_blank"
+              rel="noreferrer"
               className={`inline-block px-4 py-2 rounded-lg ${
                 isDarkMode ? 'bg-[#428dd7] text-white' : 'bg-[#428dd7] text-white'
               } hover:bg-[#0A66C2] transition duration-300`}
@@ -170,6 +171,8 @@ export default function SosmedSection({ isDarkMode, language }) {
                 } 
               }}
               href="https://github.com/HenryFtNonna"
+              target="_blank"
+              rel="noreferrer"
               className={`inline-block px-4 py-2 rounded-lg ${
                 isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-600 text-white'
               } hover:bg-gray-800 transition duration-300`}
@@ -218,6 +221,8 @@ export default function SosmedSection({ isDarkMode, language }) {
               } 
             }}
               href="https://www.instagram.com/mohan.henryk/"
+              target="_blank"
+              rel="noreferrer"
               className={`inline-block px-4 py-2 rounded-lg ${
                 isDarkMode ? 'bg-[#e17185] text-white' : 'bg-[#e17185] text-white'
               } hover:bg-[#E4405F] transition duration-300`}

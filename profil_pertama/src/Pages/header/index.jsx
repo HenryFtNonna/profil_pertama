@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react'; // Tambahkan useRef
 import { Link } from 'react-scroll';
 
 export default function Header({ isDarkMode, setIsDarkMode, language, setLanguage }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   // Fungsi toggle untuk tema
   const toggleTheme = () => setIsDarkMode((prev) => !prev);
@@ -13,6 +16,17 @@ export default function Header({ isDarkMode, setIsDarkMode, language, setLanguag
     setActiveSection(id);
   };
   
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Efek untuk menangani scroll dan menentukan section aktif
   useEffect(() => {
@@ -94,32 +108,36 @@ export default function Header({ isDarkMode, setIsDarkMode, language, setLanguag
 
         {/* Dropdown Pilihan Bahasa (Diubah menggunakan DaisyUI) */}
         <div className="flex items-center gap-2">
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className={`btn btn-ghost ${
-                isDarkMode ? 'text-white hover:bg-neutral-700' : 'text-black hover:bg-neutral-100'
-              }`}
-            >
-              {language === 'en' ? 'ENGLISH' : 'INDONESIA'}
-            </div>
-            <ul
-              tabIndex={0}
-              className={`dropdown-content z-[1] menu p-2 shadow rounded-box w-52 ${
-                isDarkMode ? 'bg-neutral-800' : 'bg-white'
-              }`}
-            >
-              {['en', 'id'].map((lang) => (
-                <li key={lang}>
-                  <button
-                    onClick={() => setLanguage(lang)}
-                    className={`flex justify-between items-center ${
-                      isDarkMode
-                        ? 'text-white hover:bg-neutral-700'
-                        : 'text-black hover:bg-neutral-100'
-                    }`}
-                  >
+        <div className="dropdown dropdown-end" ref={dropdownRef}>
+          <button
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className={`btn btn-ghost ${
+              isDarkMode ? 'text-white hover:bg-neutral-700' : 'text-black hover:bg-neutral-100'
+            }`}
+          >
+            {language === 'en' ? 'ENGLISH' : 'INDONESIA'}
+          </button>
+          
+          <ul
+            className={`dropdown-content z-[1] menu p-2 shadow rounded-box w-52 ${
+              isDarkMode ? 'bg-neutral-800' : 'bg-white'
+            } ${isDropdownOpen ? 'block' : 'hidden'}`}
+          >
+            {['en', 'id'].map((lang) => (
+              <li key={lang}>
+                <button
+                  onClick={() => {
+                    setLanguage(lang);
+                    setIsDropdownOpen(false); // Tutup dropdown setelah memilih
+                  }}
+                  className={`flex justify-between items-center ${
+                    isDarkMode
+                      ? 'text-white hover:bg-neutral-700'
+                      : 'text-black hover:bg-neutral-100'
+                  }`}
+                >
+
+                    {/* sini */}
                     <span>{lang === 'en' ? 'ENGLISH' : 'INDONESIA'}</span>
                     {language === lang && (
                       <svg
