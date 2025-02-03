@@ -131,21 +131,21 @@ export default function HeroSection({ isDarkMode, language }) {
           viewport={{ amount: 0.2, margin: "100px" }}
           className="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0 mr-12"
         >
-<div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500 
-                relative hover:shadow-[0_0_50px_15px_rgba(59,130,246,0.7)] 
-                transition-shadow duration-300">
-  {/* Glow Effect */}
-  <div className="absolute inset-0 rounded-full pointer-events-none 
-                  shadow-[0_0_80px_25px_rgba(59,130,246,0.6)] 
-                  opacity-80 hover:opacity-100 transition-opacity duration-300" />
-  
-  <img
-    src={Profil}
-    alt="Mohan Henry Kusuma"
-    className="w-full h-full object-cover"
-    loading="lazy"
-  />
-</div>
+          <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500 
+                          relative hover:shadow-[0_0_50px_15px_rgba(59,130,246,0.7)] 
+                          transition-shadow duration-300">
+            {/* Glow Effect */}
+            <div className="absolute inset-0 rounded-full pointer-events-none 
+                            shadow-[0_0_80px_25px_rgba(59,130,246,0.6)] 
+                            opacity-80 hover:opacity-100 transition-opacity duration-300" />
+            
+            <img
+              src={Profil}
+              alt="Mohan Henry Kusuma"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
         </motion.div>
       </div>
     </div>
