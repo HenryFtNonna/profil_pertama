@@ -23,22 +23,6 @@ export default function HeroSection({ isDarkMode, language }) {
     },
   };
 
-  // const ProfilePhoto = {
-  //   offscreen: {
-  //     y: 50,
-  //     opacity: 0
-  //   },
-  //   onscreen: {
-  //     y: 0,
-  //     opacity: 1,
-  //     transition: {
-  //       type: "spring",
-  //       bounce: 0.4,
-  //       duration: 0.8
-  //     }
-  //   }
-  // };
-
   const imageVariants = {
     hidden: { opacity: 0, x: 50 },
     visible: {
@@ -64,8 +48,8 @@ export default function HeroSection({ isDarkMode, language }) {
       transition: {
         type: "spring",
         bounce: 0.4,
-        duration: 0.4, // Durasi diperpendek
-        delay: 0.3    // Tambahkan delay jika perlu
+        duration: 0.4, 
+        delay: 0.3    
       }
     }
   };
@@ -89,19 +73,14 @@ export default function HeroSection({ isDarkMode, language }) {
   className={`${isDarkMode ? 'bg-neutral-900 text-white' : 'bg-white text-black'} min-h-[calc(100vh-5rem)] py-2 relative`}
 >
       <ParticlesComponent isDarkMode={isDarkMode} />
-
       <div className="container mx-auto px-4 md:px-12 flex flex-col md:flex-row items-center justify-center h-screen relative z-10">
+
         {/* Kolom Kiri: Teks Perkenalan */}
         <motion.div 
-          // initial={{ opacity: 0, x: -50 }}
-          // animate={{ opacity: 1, x: 0 }}
-          // transition={{ duration: 0.8 }}
-          // className="md:w-1/2 text-center md:text-left"
-
           variants={textVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.2, margin: "100px" }} // Hapus once: true
+          viewport={{ amount: 0.2, margin: "100px" }} 
           className="md:w-1/2 text-center md:text-left"
 >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -117,8 +96,8 @@ export default function HeroSection({ isDarkMode, language }) {
               scale: 1.15,
               transition: { 
                 type: "spring", 
-                bounce: 0.6,  // Nilai bounce lebih tinggi untuk efek lebih "hidup"
-                duration: 0.3 // Durasi hover diperpendek
+                bounce: 0.6,  
+                duration: 0.3 
               } 
             }}
             whileTap={{ 
@@ -136,16 +115,7 @@ export default function HeroSection({ isDarkMode, language }) {
           </motion.button>
         </motion.div>
 
-        {/* Kolom Kanan: Foto Lingkaran */}
         <motion.div
-          // initial="offscreen"
-          // whileInView="onscreen"
-          // viewport={{  amount: 0.2,margin: "100px" }}
-          // whileHover={{ scale: 1.10 }}
-          // whileTap={{ scale: 0.95 }}
-          // variants={ProfilePhoto}
-          // className="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0 mr-12"
-
           variants={imageVariants}
           initial="hidden"
           whileInView="visible"

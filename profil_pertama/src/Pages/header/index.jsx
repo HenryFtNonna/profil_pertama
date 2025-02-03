@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'; // Tambahkan useRef
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-scroll';
 
 export default function Header({ isDarkMode, setIsDarkMode, language, setLanguage }) {

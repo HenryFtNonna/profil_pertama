@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
+import Footer from '../../footer/index';
 
 export default function SosmedSection({ isDarkMode, language }) {
   
@@ -35,20 +36,6 @@ export default function SosmedSection({ isDarkMode, language }) {
     }
   };
 
-  // const ButtonSosmed = {
-
-  //   onscreen: {
-  //     y: 0,
-  //     opacity: 1,
-  //     transition: {
-  //       type: "spring",
-  //       bounce: 0.4,
-  //       duration: 0.2, // Durasi diperpendek
-  //       delay: 0.2    // Tambahkan delay jika perlu
-  //     }
-  //   }
-  // };
-
   const ButtonSosmed = {
     hidden: { scale: 0.8, opacity: 0 },
     visible: {
@@ -77,7 +64,7 @@ export default function SosmedSection({ isDarkMode, language }) {
         <h2 className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-black'} mb-12 text-center`}>
           {texts[language].title}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-[130px]">
 
           {/* Card LinkedIn */}
           <motion.div 
@@ -107,8 +94,8 @@ export default function SosmedSection({ isDarkMode, language }) {
               scale: 1.15,
               transition: { 
                 type: "spring", 
-                bounce: 0.2,  // Nilai bounce lebih tinggi untuk efek lebih "hidup"
-                duration: 0.2  // Durasi hover diperpendek
+                bounce: 0.2,  
+                duration: 0.2  
               } 
             }}
             whileTap={{ 
@@ -131,7 +118,6 @@ export default function SosmedSection({ isDarkMode, language }) {
             </motion.div>
 
           {/* Card GitHub */}
-          
           <motion.div 
             initial="offscreen"
             whileInView="onscreen"
@@ -158,8 +144,8 @@ export default function SosmedSection({ isDarkMode, language }) {
                 scale: 1.15,
                 transition: { 
                   type: "spring", 
-                  bounce: 0.2,  // Nilai bounce lebih tinggi untuk efek lebih "hidup"
-                  duration: 0.2  // Durasi hover diperpendek
+                  bounce: 0.2,  
+                  duration: 0.2  
                 } 
               }}
               whileTap={{ 
@@ -208,8 +194,8 @@ export default function SosmedSection({ isDarkMode, language }) {
               scale: 1.15,
               transition: { 
                 type: "spring", 
-                bounce: 0.2,  // Nilai bounce lebih tinggi untuk efek lebih "hidup"
-                duration: 0.2  // Durasi hover diperpendek
+                bounce: 0.2,  
+                duration: 0.2  
               } 
             }}
             whileTap={{ 
@@ -231,6 +217,7 @@ export default function SosmedSection({ isDarkMode, language }) {
             </motion.a>
           </motion.div>
         </div>
+        <Footer />
       </div>
     </div>
   );
