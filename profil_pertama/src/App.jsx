@@ -1,35 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import Preloader from './Pages/Preloader';
+import Pages from './Pages';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isLoading, setLoading] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [language, setLanguage] = useState('en');
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className={isDarkMode ? 'dark' : 'light'}>
+      {isLoading && <Preloader setLoading={setLoading} />}
+      <Pages
+        isDarkMode={isDarkMode}
+        setIsDarkMode={setIsDarkMode}
+        language={language}
+        setLanguage={setLanguage}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App; 
